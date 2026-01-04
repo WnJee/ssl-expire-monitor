@@ -13,14 +13,13 @@ TIMEOUT = 5 #超时时间
 WARNING_DAYS = 5   # 到期前 5 天标红
 
 # SMTP（如果只想打印，不发邮件，可以把 SEND_MAIL 设为 False）
-MAIL_FROM = SMTP_USER
-
 SMTP_SERVER = os.getenv("SMTP_SERVER")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASS = os.getenv("SMTP_PASS")
 MAIL_TO = os.getenv("MAIL_TO").split(",")
 SEND_MAIL = True
+MAIL_FROM = SMTP_USER
 
 # ============================================
 
