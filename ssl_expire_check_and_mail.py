@@ -70,6 +70,7 @@ def send_mail(content: str):
     msg.attach(MIMEText(content, "plain", "utf-8"))
 
     with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
+        server.starttls()
         server.login(SMTP_USER, SMTP_PASS)
         server.sendmail(MAIL_FROM, MAIL_TO, msg.as_string())
 
@@ -116,8 +117,11 @@ def main():
     print(report)
 
     if SEND_MAIL and warning_exists:
-        send_mail(report)
-        print("📧 已发送告警邮件")
+        try:
+            send_mail(report)
+            print("📧 已发送告警邮件")
+        except Exception as e:
+            print("❌ 邮件发送失败:", e)
     elif SEND_MAIL:
         print("ℹ️ 没有即将到期的证书，未发送邮件")
 
