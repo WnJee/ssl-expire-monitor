@@ -24,6 +24,6 @@ jobs:
           SMTP_PORT: 465
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          MAIL_TO: 123456@qq.com
+          MAIL_TO: 1014259604@qq.com
         run: |
           python ssl_expire_check_and_mail.py
