@@ -11,4 +11,3 @@ api-admin.yhbus.puugy.com
 star.yhbus.puugy.com
 boss.yhbus.puugy.com
 ps.puugy.com
-dev-star.yhbus.puugy.com
