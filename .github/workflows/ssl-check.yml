@@ -1,0 +1,29 @@
+name: SSL Expire Monitor
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # 每天 10:00 北京时间（UTC+8 = 01:00）
+  workflow_dispatch:     # 支持手动点按钮跑
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run SSL Expire Check
+        env:
+          SMTP_SERVER: smtp.qq.com
+          SMTP_PORT: 465
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: 123456@qq.com
+        run: |
+          python ssl_expire_check_and_mail.py
