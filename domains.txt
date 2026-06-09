@@ -1,3 +1,4 @@
+api-prod.qcsc.puugy.com
 h5.qc.puugy.com
 ad.qc.puugy.com
 n19.puugy.com
